@@ -15,6 +15,9 @@ jobs:
       - name: Install win_flex_bison  
         run: choco install winflexbison3 -y  
   
+      - name: Copy signature files  
+        run: Copy-Item src/metadata/devsig.h.sig, src/metadata/compilersig.h.sig -Destination src/metadata/sigs/  
+  
       - name: Configure CMake (Win32)  
         run: cmake -S . -B build -A Win32 "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" "-DFLEX_EXECUTABLE=C:/ProgramData/chocolatey/bin/win_flex.exe" "-DBISON_EXECUTABLE=C:/ProgramData/chocolatey/bin/win_bison.exe"  
   
